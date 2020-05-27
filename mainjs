@@ -12,67 +12,134 @@ console.log(add(2, 4));
 /* katas 2 */
 // Multiply //
 
-function Multiply(x, y) {
-  return 4 * 6;
+//  multiply (without using * 'multiplication'operator)
+
+function multiply(a, b) {
+    let multiplyTotal = 0
+
+    for (let index = 0; index < b; index++) {
+
+        multiplyTotal = add(multiplyTotal, a)
+        // console.log(multiplyTotal)
+        // console.log(add(6, 4))  
+    }
+
+    return multiplyTotal
 }
-Multiply("x", "y", "return (x * y);");
-console.log(Multiply(4 * 6))
+console.log(multiply(6, 4))
 
 
 
 /* katas 3 */
 // power //
 
-function pow(base, power) {
-    if (power < 0) return 1 / pow(base, -power);
-    var b = base, result = 1;
-    while (power > 0) {
-        if ((power & 1) != 0) {
-            result *= b;
-        }
-        power >>= 1;
-        b *= b;
+// power/exponentiation (without using ** 'power' operator)
+
+function Power(x, n) {
+    let powerTotal = x
+
+    for (let index = 1; index < n; index++) {
+
+        powerTotal = multiply(powerTotal, x)
+        // console.log(powerTotal)
     }
-    return result;
+
+    return powerTotal
+
 }
-console.log(pow(3, 4))
+console.log(Power(3, 4))
 
 
-
+ 
 /* katas 4 */
+// factorial //    
     
-    
- function factorial(n) 
-{ 
 
-  if (n === 0)
- {
-    return 1;
- }
-  return n * factorial(n -1);
-         
+
+// function Factorial(n) {
+// let factorBase = n
+// let factorStep //temporarily holds each multiplication result of the factorial to be added together
+// let factorArray = []
+// let factorArrayTotal
+
+
+// for (let index = 1; index < n; index++) {
+
+//     let factorMultiplier = subtractNum(factorBase, 1)
+//     factorStep = multiplyNum(n, factorMultiplier)
+//     // console.log(factorStep)
+
+//     factorArray.push(factorStep)
+//     // console.log(factorArray)
+
+//     factorBase--
+
+// }
+
+// factorArrayTotal = factorArray.reduce(addNum, 0)
+// // console.log(factorArrayTotal)
+
+//     return factorArrayTotal
+
+// }
+// console.log(Factorial(4))
+
+//  without using an array //
+
+function factorial(n){
+  let answer = 1;
+  if (n == 0 || n == 1){
+    return answer;
+  }else{
+    for(var i = n; i >= 1; i--){
+      answer = answer * i;
+    }
+    return answer;
+  }  
 }
-console.log(factorial(4));
-
+let n = 4;
+answer = factorial(n)
+console.log("The factorial of " + n + " is " + answer);
 
 
 /* katas 5 */
+// fibonacci //
 
+// let arrayFib = [0, 1]
 
-var fibonacci_series = function (n) 
-{
-  if (n===1) 
-  {
-    return [0, 1];
-  } 
-  else 
-  {
-    var s = fibonacci_series(n - 1);
-    s.push(s[s.length - 1] + s[s.length - 2]);
-    return s;
-  }
-};
+// function Fibonacci(n) {
 
- console.log(fibonacci_series(13));
- 
+//     for (let index = 2; index < n; index++) {
+//         arrayFib[index] = addNum(arrayFib[subtractNum(index, 2)], arrayFib[subtractNum(index, 1)])
+//         console.log(arrayFib[index])
+//         console.log(arrayFib)
+//     } //for loop to generate arrayFib up to nth number
 
+//     index = subtractNum(arrayFib.length, 1) //to get the index position of the nth number
+//     console.log(index)
+
+//     return arrayFib[index]
+
+// }
+
+// console.log(Fibonacci(8))
+
+// Fibonacci without using an array //
+
+let fibonacciA = 0
+let fibonacciB = 1
+let fibonacciC
+
+function fibonacci_series(n) {
+
+    for (let index = 2; index < n; index++) {
+
+        fibonacciC = add(fibonacciA, fibonacciB)
+        fibonacciA = fibonacciB
+        fibonacciB = fibonacciC
+    }
+    return fibonacciC
+
+}
+
+console.log(fibonacci_series(8))
